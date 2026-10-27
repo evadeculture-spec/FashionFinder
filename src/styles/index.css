@@ -1,0 +1,146 @@
+@import 'tailwindcss';
+
+/* ───────────────────────────── VESTA design tokens ─────────────────────────────
+   Colour, type, radius, elevation and motion live here. Tailwind utilities are
+   generated from @theme, so `bg-ivory`, `text-ink`, `rounded-card` etc. all map
+   to these tokens. Change the brand here, not in components. */
+@theme {
+  --color-ivory: #f7f5f0;
+  --color-paper: #ffffff;
+  --color-ink: #20201e;
+  --color-ink-soft: #4a4945;
+  --color-muted: #6f6a62;
+  --color-taupe: #b7aa9a;
+  --color-taupe-soft: #d9d1c6;
+  --color-sage: #a9b5a0;
+  --color-sage-soft: #e3e8de;
+  --color-clay: #c8785b;
+  --color-clay-deep: #a65c41;
+  --color-clay-soft: #f3e2d9;
+  --color-line: #e9e7e2;
+  --color-line-strong: #d8d5ce;
+  --color-success: #387a58;
+  --color-success-soft: #e1eee6;
+  --color-warning: #a8691d;
+  --color-warning-soft: #f6ead8;
+  --color-danger: #a4473a;
+  --color-danger-soft: #f4e1dd;
+
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Playfair Display', ui-serif, Georgia, 'Times New Roman', serif;
+
+  --radius-chip: 999px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-card: 14px;
+  --radius-sheet: 22px;
+
+  --shadow-soft: 0 1px 2px rgb(32 32 30 / 0.04), 0 4px 16px rgb(32 32 30 / 0.05);
+  --shadow-lift: 0 2px 6px rgb(32 32 30 / 0.06), 0 18px 40px rgb(32 32 30 / 0.1);
+  --shadow-nav: 0 -1px 0 rgb(32 32 30 / 0.06), 0 -10px 30px rgb(32 32 30 / 0.05);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 160ms;
+  --duration-base: 260ms;
+
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+
+  --animate-fade-up: fade-up 420ms var(--ease-out-soft) both;
+  --animate-fade-in: fade-in 260ms ease-out both;
+  --animate-sheet-up: sheet-up 320ms var(--ease-out-soft) both;
+  --animate-shimmer: shimmer 1.6s linear infinite;
+  --animate-scan: scan 1.8s ease-in-out infinite;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes sheet-up {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  @keyframes shimmer {
+    from { background-position: -200% 0; }
+    to { background-position: 200% 0; }
+  }
+  @keyframes scan {
+    0%, 100% { top: 6%; }
+    50% { top: 88%; }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    background: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: 'ss01', 'tnum' 0;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--color-clay-soft); }
+  :focus-visible {
+    outline: 2px solid var(--color-clay);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  button { cursor: pointer; }
+  button:disabled { cursor: not-allowed; }
+  input, select, textarea { font: inherit; color: inherit; }
+}
+
+@layer components {
+  .font-display {
+    font-family: var(--font-serif);
+    letter-spacing: -0.015em;
+    font-weight: 500;
+  }
+  .eyebrow {
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--color-muted);
+  }
+  .tabular { font-variant-numeric: tabular-nums; }
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .skeleton {
+    background: linear-gradient(90deg, var(--color-line) 0%, #f2f0ea 50%, var(--color-line) 100%);
+    background-size: 200% 100%;
+    animation: var(--animate-shimmer);
+  }
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+  .field {
+    width: 100%;
+    border: 1px solid var(--color-line-strong);
+    background: var(--color-paper);
+    border-radius: var(--radius-md);
+    padding: 0.7rem 0.85rem;
+    font-size: 0.9375rem;
+    transition: border-color var(--duration-fast);
+  }
+  .field:focus { outline: none; border-color: var(--color-ink); }
+  .field::placeholder { color: #9a958c; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

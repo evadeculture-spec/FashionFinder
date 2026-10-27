@@ -1,0 +1,236 @@
+import type { Inspiration, Outfit, SubscriptionPlan, UserProfile } from './types';
+import { img } from './images';
+
+/* Editorial looks curated by the (fictional) VESTA style team. Items reference
+   real catalogue ids so totals, stores and availability resolve from data. */
+export const OUTFITS: Outfit[] = [
+  {
+    id: 'o-outono-baixa',
+    name: 'Outono na Baixa',
+    mood: 'Vintage descontraído',
+    occasion: 'Fim de semana',
+    cover: img.streetA,
+    origin: 'editorial',
+    items: {
+      outerwear: 'p-casaco-vintage-castanho',
+      top: 'p-tshirt-organica',
+      bottom: 'p-jeans-direitos',
+      shoes: 'p-botas-pele',
+      accessory: 'p-oculos-tartaruga',
+    },
+  },
+  {
+    id: 'o-reuniao-chiado',
+    name: 'Reunião no Chiado',
+    mood: 'Alfaiataria suave',
+    occasion: 'Trabalho',
+    cover: img.heroAlt,
+    origin: 'editorial',
+    items: {
+      outerwear: 'p-blazer-linho',
+      top: 'p-camisa-linho',
+      bottom: 'p-calcas-pregas',
+      shoes: 'p-mocassins',
+      bag: 'p-mala-tote',
+    },
+  },
+  {
+    id: 'o-jantar-ribeira',
+    name: 'Jantar na Ribeira',
+    mood: 'Noite elegante',
+    occasion: 'Jantar',
+    cover: img.streetD,
+    origin: 'editorial',
+    items: {
+      dress: 'p-vestido-cetim',
+      shoes: 'p-sandalias-tacao',
+      bag: 'p-mala-ombro',
+      accessory: 'p-argolas-douradas',
+    },
+  },
+  {
+    id: 'o-cedofeita-street',
+    name: 'Cedofeita, sábado',
+    mood: 'Streetwear do Norte',
+    occasion: 'Casual',
+    cover: img.menA,
+    origin: 'editorial',
+    items: {
+      outerwear: 'p-parka-azeitona',
+      top: 'p-sweat-norte',
+      bottom: 'p-calcas-cargo',
+      shoes: 'p-tenis-retro',
+      accessory: 'p-colar-corrente',
+    },
+  },
+  {
+    id: 'o-verao-algarve',
+    name: 'Luz do Sul',
+    mood: 'Linho & sol',
+    occasion: 'Férias',
+    cover: img.streetC,
+    origin: 'editorial',
+    items: {
+      dress: 'p-vestido-linho',
+      shoes: 'p-sandalias-tacao',
+      bag: 'p-mala-crossbody',
+      accessory: 'p-lenco-seda',
+    },
+  },
+  {
+    id: 'o-classico-inverno',
+    name: 'Inverno clássico',
+    mood: 'Intemporal',
+    occasion: 'Cidade',
+    cover: img.coatLong,
+    origin: 'editorial',
+    items: {
+      outerwear: 'p-sobretudo-camelo',
+      top: 'p-camisola-la',
+      bottom: 'p-calcas-pregas',
+      shoes: 'p-botas-pele',
+      bag: 'p-mala-tote',
+    },
+  },
+  {
+    id: 'o-domingo-mercado',
+    name: 'Domingo de mercado',
+    mood: 'Minimal & confortável',
+    occasion: 'Fim de semana',
+    cover: img.streetB,
+    origin: 'editorial',
+    items: {
+      outerwear: 'p-trench-areia',
+      top: 'p-tshirt-organica',
+      bottom: 'p-chinos-algodao',
+      shoes: 'p-tenis-brancos',
+      bag: 'p-mala-crossbody',
+    },
+  },
+  {
+    id: 'o-romantico-coimbra',
+    name: 'Tarde em Coimbra',
+    mood: 'Romântico vintage',
+    occasion: 'Passeio',
+    cover: img.heroMain,
+    origin: 'editorial',
+    items: {
+      outerwear: 'p-cardigan-grosso',
+      top: 'p-blusa-romantica',
+      bottom: 'p-saia-midi',
+      shoes: 'p-mocassins',
+      accessory: 'p-anel-sinete',
+    },
+  },
+  {
+    id: 'o-ganga-total',
+    name: 'Ganga & pele',
+    mood: 'Clássico americano',
+    occasion: 'Casual',
+    cover: img.menB,
+    origin: 'editorial',
+    items: {
+      outerwear: 'p-blusao-ganga',
+      top: 'p-camisa-vintage-xadrez',
+      bottom: 'p-jeans-direitos',
+      shoes: 'p-botas-pele',
+      accessory: 'p-cinto-pele',
+    },
+  },
+];
+
+export const outfitById = Object.fromEntries(OUTFITS.map((o) => [o.id, o])) as Record<string, Outfit>;
+
+export const INSPIRATIONS: Inspiration[] = [
+  {
+    id: 'insp-1',
+    title: 'Camurça e ganga',
+    image: img.streetA,
+    detected: { category: 'outerwear', colours: ['brown', 'camel'], styles: ['vintage', 'oversized'], label: 'casaco castanho vintage' },
+  },
+  {
+    id: 'insp-2',
+    title: 'Vestido de noite',
+    image: img.dressSlip,
+    detected: { category: 'dresses', colours: ['burgundy', 'black'], styles: ['party', 'romantic'], label: 'vestido de cetim' },
+  },
+  {
+    id: 'insp-3',
+    title: 'Ténis brancos',
+    image: img.sneakers,
+    detected: { category: 'shoes', colours: ['white'], styles: ['minimal', 'casual'], label: 'ténis brancos minimalistas' },
+  },
+  {
+    id: 'insp-4',
+    title: 'Alfaiataria leve',
+    image: img.blazer,
+    detected: { category: 'outerwear', colours: ['ecru', 'camel'], styles: ['tailoring', 'minimal'], label: 'blazer claro' },
+  },
+  {
+    id: 'insp-5',
+    title: 'Mala estruturada',
+    image: img.bagShoulder,
+    detected: { category: 'bags', colours: ['brown', 'black'], styles: ['classic', 'vintage'], label: 'mala de pele' },
+  },
+  {
+    id: 'insp-6',
+    title: 'Malha de inverno',
+    image: img.knit,
+    detected: { category: 'knitwear', colours: ['ecru', 'camel'], styles: ['minimal', 'classic'], label: 'camisola de lã' },
+  },
+];
+
+export const PLANS: SubscriptionPlan[] = [
+  {
+    id: 'free',
+    name: 'VESTA',
+    monthly: 0,
+    annual: 0,
+    blurb: 'Tudo o que precisas para descobrir peças perto de ti.',
+    features: [
+      { label: 'Pesquisa por texto e imagem', included: true },
+      { label: 'Disponibilidade reportada pelas lojas', included: true },
+      { label: 'Guarda-roupa digital', included: 'Até 50 peças' },
+      { label: 'Looks guardados', included: 'Até 5' },
+      { label: 'Alertas de pesquisa guardada', included: false },
+      { label: 'Alertas de descida de preço', included: false },
+      { label: 'Recomendações avançadas', included: false },
+      { label: 'Inspiração exclusiva', included: false },
+      { label: 'Mystery Box', included: false },
+    ],
+  },
+  {
+    id: 'plus',
+    name: 'VESTA+',
+    monthly: 4.99,
+    annual: 47.9,
+    blurb: 'Para quem quer que as peças certas venham ter consigo.',
+    features: [
+      { label: 'Pesquisa por texto e imagem', included: true },
+      { label: 'Disponibilidade reportada pelas lojas', included: true },
+      { label: 'Guarda-roupa digital', included: 'Ilimitado' },
+      { label: 'Looks guardados', included: 'Ilimitados' },
+      { label: 'Alertas de pesquisa guardada', included: true },
+      { label: 'Alertas de descida de preço', included: true },
+      { label: 'Recomendações avançadas', included: true },
+      { label: 'Inspiração exclusiva', included: true },
+      { label: 'Mystery Box', included: 'Elegível após 3 meses' },
+    ],
+  },
+];
+
+export const DEFAULT_PROFILE: UserProfile = {
+  name: 'Inês',
+  email: 'ines.demo@vesta.example',
+  sizes: { tops: 'M', bottoms: '28', shoes: '38' },
+  colours: ['brown', 'camel', 'ecru'],
+  categories: ['outerwear', 'knitwear', 'shoes'],
+  brands: ['mare', 'linhola'],
+  budgetMax: 150,
+  radiusKm: 10,
+  city: 'lisboa',
+  language: 'pt-PT',
+  privacy: { personalisedRecs: true, shareAnalytics: false },
+  notifications: { priceDrops: true, savedSearches: false, newsletter: false },
+  applyPrefsToSearch: false,
+};
